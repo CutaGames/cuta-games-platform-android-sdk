@@ -1,19 +1,26 @@
 [versions]
-agp = "8.9.1"
-kotlin = "2.0.21"
-coreKtx = "1.10.1"
+agp = "8.9.3"
+kotlin = "2.1.10"
+coreKtx = "1.16.0"
 junit = "4.13.2"
-junitVersion = "1.1.5"
-espressoCore = "3.5.1"
-lifecycleRuntimeKtx = "2.6.1"
-activityCompose = "1.8.0"
-composeBom = "2024.09.00"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+lifecycleRuntimeKtx = "2.9.0"
+activityCompose = "1.10.1"
+composeBom = "2025.05.01"
 
+kotlinxCoroutines = "1.10.2"
+kotlinxDatetime = "0.6.1"
+kotlinxSerializationJson = "1.8.0"
+
+web3j-core = "5.0.0"
 spruceidDid = "0.2.2"
 spruceidMobile = "0.10.1"
+tinkAndroid = "1.17.0"
 trustWalletCore = "4.2.21"
-appcompat = "1.6.1"
-material = "1.10.0"
+appcompat = "1.7.0"
+material = "1.12.0"
+securityCryptoKtx = "1.1.0-alpha07"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -31,16 +38,31 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
+kotlinx-coroutines-guava = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-guava", version.ref = "kotlinxCoroutines" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
+kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinxDatetime" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+
+
+
+web3j-core = { module = "org.web3j:core", version.ref = "web3j-core" }
 spruceid-didkit = { group = "com.spruceid", name = "didkit", version.ref = "spruceidDid" }
 spruceid-mobile-sdk = { group = "com.spruceid.mobile.sdk", name = "mobilesdk", version.ref = "spruceidMobile" }
+tink-android = { module = "com.google.crypto.tink:tink-android", version.ref = "tinkAndroid" }
+tink-android-signature-ed25519 = { module = "com.google.crypto.tink:tink-android-signature-ed25519", version.ref = "tinkAndroid" }
 trust-wallet-core = { group = "com.trustwallet", name = "wallet-core", version.ref = "trustWalletCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-security-crypto-ktx = { group = "androidx.security", name = "security-crypto-ktx", version.ref = "securityCryptoKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 maven-publish = { id = "maven-publish" }
+
 
