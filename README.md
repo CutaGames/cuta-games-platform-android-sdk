@@ -1,12 +1,11 @@
-# cuta-games-platform-android-sdk
-cuta games platform android sdk
+
 # Cuta-Platform Android SDK
 
 [![Release](https://jitpack.io/v/CutaGames/cuta-games-platform-android-sdk.svg)](https://jitpack.io/#CutaGames/cuta-games-platform-android-sdk)
 
--轻量级DID获取SDK，帮助Android应用快速集成Cuta平台身份标识系统
--多链钱包支付接口
--游戏数据获取接口
+- 轻量级DID获取SDK，帮助Android应用快速集成Cuta平台身份标识系统
+- 多链钱包支付接口
+- 游戏数据获取接口
 
 ## 集成方式
 
