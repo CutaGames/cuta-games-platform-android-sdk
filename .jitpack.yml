@@ -1,0 +1,6 @@
+jdk:
+  - openjdk8
+build:
+  - cd cuta-sdk && ../gradlew publishToMavenLocal  # 只编译cuta-sdk模块
+install:
+  - echo "Skipping app module"

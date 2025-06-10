@@ -51,7 +51,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.kotlinx.serialization.json)
-    implementation("com.github.CutaGames:cuta-games-platform-android-sdk:0.0.1")
+    implementation("com.cuta.games.platform:cutasdk:0.0.1")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

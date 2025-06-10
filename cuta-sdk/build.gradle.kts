@@ -58,11 +58,10 @@ afterEvaluate {
     publishing {
         publications {
             register<MavenPublication>("release") {
-                groupId = "com.cuta.games.platform"
-                artifactId = "cutasdk"
-                version = "0.0.1"
+                groupId = "com.github.CutaGames"
+                artifactId = "cuta-games-platform-android-sdk"
+                version = "0.0.1-alpha02"
 
-                // 发布 Release AAR
                 artifact("$buildDir/outputs/aar/${project.name}-release.aar")
 
                 // 自动生成 POM 依赖（可选）
