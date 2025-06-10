@@ -1,5 +1,5 @@
 jdk:
-  - openjdk11
+  - openjdk17
 before_install:
   - chmod +x gradlew  # 确保 gradlew 有执行权限
 install:
