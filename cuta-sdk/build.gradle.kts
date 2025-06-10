@@ -60,7 +60,7 @@ afterEvaluate {
             register<MavenPublication>("release") {
                 groupId = "com.github.CutaGames"
                 artifactId = "cuta-games-platform-android-sdk"
-                version = "0.0.1-alpha03"
+                version = "0.0.1"
 
                 //artifact("$buildDir/outputs/aar/${project.name}-release.aar")
                 artifact(tasks.named("bundleReleaseAar"))
