@@ -1,6 +1,6 @@
-jdk:
-  - openjdk8
-build:
-  - cd cuta-sdk && ../gradlew publishToMavenLocal  # 只编译cuta-sdk模块
+#jdk:
+ # - openjdk11
+before_install:
+  - chmod +x gradlew  # 确保 gradlew 有执行权限
 install:
-  - echo "Skipping app module"
+  - ./gradlew :cuta-sdk:publishToMavenLocal  # 仅编译 SDK 模块
