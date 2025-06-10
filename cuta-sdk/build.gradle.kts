@@ -30,6 +30,13 @@ android {
     buildFeatures {
         aidl = true
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
     publishing {
         // 配置发布变体（Release 或 Debug）
         singleVariant("release") {
@@ -55,7 +62,11 @@ afterEvaluate {
                 artifactId = "cuta-games-platform-android-sdk"
                 version = "0.0.1-alpha03"
 
-                artifact("$buildDir/outputs/aar/${project.name}-release.aar")
+                //artifact("$buildDir/outputs/aar/${project.name}-release.aar")
+                artifact(tasks.named("bundleReleaseAar"))
+                /*afterEvaluate {
+                    from(components["release"])
+                }*/
 
                 // 自动生成 POM 依赖（可选）
                 pom {
