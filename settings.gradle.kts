@@ -19,6 +19,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Cuta sdk"
+rootProject.name = "cuta-platform-sdk"
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
 include(":cuta-sdk")

@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.serialization)
+   // alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.maven.publish)
 }
 
@@ -34,66 +34,60 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    buildFeatures {
+        aidl = true
+    }
+    publishing {
+        // 配置发布变体（Release 或 Debug）
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 }
 
 dependencies {
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.kotlinx.serialization.json)
-    implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.web3j.core)
-    implementation(libs.tink.android)
-    implementation(libs.material)
-    implementation(libs.androidx.security.crypto.ktx)
+    //implementation(libs.androidx.core.ktx)
+    //implementation(libs.androidx.appcompat)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
 
 afterEvaluate {
-    val isAndroidLibraryProject = plugins.hasPlugin("com.android.library")
-    if (isAndroidLibraryProject) {
-        tasks.register<Copy>("copyDeps") {
-            from(configurations["includeJars"].filter { it.name.endsWith(".jar") })
-            into("./build/intermediates/packaged-classes/release/libs")
-        }
-        tasks.named("mergeReleaseJniLibFolders") {
-            dependsOn("copyDeps")
-        }
-
-        tasks.register<Copy>("copyDebugDeps") {
-            from(configurations["includeJars"].filter { it.name.endsWith(".jar") })
-            into("./build/intermediates/packaged-classes/debug/libs")
-        }
-        tasks.named("mergeDebugJniLibFolders") {
-            dependsOn("copyDebugDeps")
-        }
-    }
-
     publishing {
         publications {
-            create<MavenPublication>("library") {
+            register<MavenPublication>("release") {
                 groupId = "com.cuta.games.platform"
                 artifactId = "cutasdk"
-                version = "0.0.1"
-                artifact(tasks.named("bundleReleaseAar"))
+                version = "0.0.1-alpha01"
 
-                pom.withXml {
-                    val dependenciesNode = asNode().appendNode("dependencies")
-                    configurations["includeJars"].allDependencies.forEach { dep ->
-                        val dependencyNode = dependenciesNode.appendNode("dependency")
-                        dependencyNode.appendNode("groupId", dep.group)
-                        dependencyNode.appendNode("artifactId", dep.name)
-                        dependencyNode.appendNode("version", dep.version)
-                        dependencyNode.appendNode("scope", "runtime")
+                // 发布 Release AAR
+                artifact("$buildDir/outputs/aar/${project.name}-release.aar")
+
+                // 自动生成 POM 依赖（可选）
+                pom {
+                    name.set("cuta platform sdk")
+                    description.set("A library for cuta platform")
+                    url.set("https://github.com/CutaGames/cuta-games-platform-android-sdk")
+                    licenses {
+                        license {
+                            name.set("MIT")
+                            url.set("https://opensource.org/licenses/MIT")
+                        }
+                    }
+                    developers {
+                        developer {
+                            id.set("cuta developer")
+                            name.set("swepthong")
+                        }
+                    }
+                    scm {
+                        connection.set("scm:git:github.com/CutaGames/cuta-games-platform-android-sdk.git")
+                        url.set("https://github.com/CutaGames/cuta-games-platform-android-sdk")
                     }
                 }
             }
-        }
-        repositories {
-            mavenLocal()
         }
     }
 }
