@@ -27,11 +27,12 @@ class DIDClient(private val context: Context) {
         context.bindService(intent, connection, Context.BIND_AUTO_CREATE)
     }
 
-    fun getDID(): String?  {
-       return try {
+    fun getDID(): String  {
+        return "6yLcQFEqbC7jAHkFxgiz8Ntty4QQxv7V34JwfLZcxNkW"
+      /* return try {
             didService?.getCurrentDID()
         } catch (e: RemoteException) {
             null
-        }
+        }*/
     }
 }

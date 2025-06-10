@@ -60,7 +60,7 @@ afterEvaluate {
             register<MavenPublication>("release") {
                 groupId = "com.cuta.games.platform"
                 artifactId = "cutasdk"
-                version = "0.0.1-alpha01"
+                version = "0.0.1"
 
                 // 发布 Release AAR
                 artifact("$buildDir/outputs/aar/${project.name}-release.aar")
